@@ -44,5 +44,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.vm.synced_folder "~/", "/host", nfs: true
 
   # For now we'll use basic shell provisioning script:
-  config.vm.provision "shell", path: "setup/provision.sh"
+  # config.vm.provision "shell", path: "setup/provision.sh"
+  config.vm.provision "ansible" do |ansible|
+    #ansible.playbook = "setup/playbook.yml"
+    ansible.playbook = "setup/upgrade-server.yml"
+  end
 end
